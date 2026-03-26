@@ -1,0 +1,294 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   CUSTOM ANIMATIONS
+   ======================================== */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes typing {
+  0%, 60%, 100% { opacity: 0.3; }
+  30% { opacity: 1; }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Stagger animation delays */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+
+/* ========================================
+   GRADIENT BACKGROUNDS
+   ======================================== */
+
+.bg-gradient-primary {
+  background: linear-gradient(to right, #0ea5e9, #0284c7, #d946ef);
+}
+
+.bg-gradient-hero {
+  @apply bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900;
+}
+
+.bg-gradient-card {
+  @apply bg-gradient-to-br from-white to-surface-50;
+}
+
+.bg-gradient-mesh {
+  background: 
+    radial-gradient(at 40% 20%, rgb(14, 165, 233, 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgb(217, 70, 239, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgb(14, 165, 233, 0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, rgb(217, 70, 239, 0.08) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgb(14, 165, 233, 0.1) 0px, transparent 50%);
+}
+
+/* ========================================
+   GLASS MORPHISM
+   ======================================== */
+
+.glass {
+  @apply bg-white/80 backdrop-blur-xl border border-white/20;
+}
+
+.glass-dark {
+  @apply bg-slate-900/80 backdrop-blur-xl border border-white/10;
+}
+
+/* ========================================
+   MESSAGE BUBBLES
+   ======================================== */
+
+.message-user {
+  @apply bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-2xl rounded-br-sm shadow-lg shadow-primary-500/25;
+}
+
+.message-assistant {
+  @apply bg-white border border-surface-200 text-surface-800 rounded-2xl rounded-bl-sm shadow-lg shadow-black/5;
+}
+
+/* Typing indicator */
+.typing-dot {
+  @apply w-2 h-2 bg-surface-400 rounded-full;
+  animation: typing 1.4s infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+/* ========================================
+   BUTTONS & INTERACTIONS
+   ======================================== */
+
+.btn-primary {
+  @apply relative overflow-hidden bg-gradient-to-r from-primary-500 to-primary-600 text-white font-medium rounded-xl;
+  @apply hover:from-primary-600 hover:to-primary-700 hover:shadow-lg hover:shadow-primary-500/25;
+  @apply active:scale-[0.98] transition-all duration-200;
+}
+
+.btn-primary::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0;
+  @apply translate-x-[-200%] transition-transform duration-500;
+}
+
+.btn-primary:hover::before {
+  @apply translate-x-[200%];
+}
+
+.btn-secondary {
+  @apply relative bg-white border border-surface-200 text-surface-700 font-medium rounded-xl;
+  @apply hover:bg-surface-50 hover:border-surface-300 hover:shadow-md;
+  @apply active:scale-[0.98] transition-all duration-200;
+}
+
+.btn-ghost {
+  @apply text-surface-600 hover:text-surface-800 hover:bg-surface-100 rounded-lg;
+  @apply active:scale-[0.98] transition-all duration-200;
+}
+
+/* ========================================
+   CARDS
+   ======================================== */
+
+.card {
+  @apply bg-white rounded-2xl border border-surface-200 shadow-sm;
+  @apply hover:shadow-xl hover:shadow-black/5 hover:border-surface-300;
+  @apply transition-all duration-300;
+}
+
+.card-interactive {
+  @apply card cursor-pointer;
+  @apply hover:-translate-y-1;
+}
+
+.card-glow {
+  @apply card relative;
+}
+
+.card-glow::before {
+  content: '';
+  @apply absolute -inset-0.5 bg-gradient-to-r from-primary-500 to-accent-500 rounded-2xl opacity-0 blur;
+  @apply transition-opacity duration-300;
+  z-index: -1;
+}
+
+.card-glow:hover::before {
+  @apply opacity-20;
+}
+
+/* ========================================
+   INPUTS
+   ======================================== */
+
+.input-modern {
+  @apply w-full px-4 py-3 bg-surface-50 border border-surface-200 rounded-xl;
+  @apply placeholder:text-surface-400 text-surface-800;
+  @apply focus:bg-white focus:border-primary-400 focus:ring-4 focus:ring-primary-500/10;
+  @apply transition-all duration-200 outline-none;
+}
+
+/* ========================================
+   SCROLLBAR
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-surface-300 rounded-full border-2 border-transparent bg-clip-content;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-surface-400;
+}
+
+/* ========================================
+   UTILITIES
+   ======================================== */
+
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Focus ring */
+*:focus-visible {
+  @apply outline-none ring-2 ring-primary-500/50 ring-offset-2;
+}
+
+/* Smooth transitions for colors only (not all properties) */
+a, button {
+  @apply transition-colors duration-150;
+}
+
+/* Typography improvements */
+body {
+  @apply antialiased bg-surface-50;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+/* Selection color */
+::selection {
+  @apply bg-primary-500/20 text-primary-900;
+}
+
+/* ========================================
+   LOADING SKELETON
+   ======================================== */
+
+.skeleton {
+  @apply bg-gradient-to-r from-surface-200 via-surface-100 to-surface-200;
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
