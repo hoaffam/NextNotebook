@@ -9,14 +9,6 @@ AI-powered document summarization and Q&A application with Corrective RAG, hybri
 ![Milvus](https://img.shields.io/badge/Zilliz-Cloud-purple)
 ![LangGraph](https://img.shields.io/badge/LangGraph-Agentic-orange)
 
-## Screenshots
-
-### Notebook View - Chat & AI Studio
-![Notebook View](docs/images/notebook-view.png)
-
-### Quiz View - Practice Mode
-![Quiz View](docs/images/quiz-view.png)
-
 ## Features
 
 - **User Authentication**: Login/Signup with JWT tokens and bcrypt password hashing
